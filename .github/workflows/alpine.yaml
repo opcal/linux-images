@@ -17,8 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      - name: Set Enc
+        uses: actions/checkout@v3
+      - name: Set Env
         run: echo "TIMESTAMP=$(date +%y.%m.%d.%H.%M)" >> $GITHUB_ENV
       - name: Docker build & push
         env:
