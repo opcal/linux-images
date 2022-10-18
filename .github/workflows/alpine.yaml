@@ -1,4 +1,4 @@
-name: build-oraclelinux-images
+name: build-alpine-images
 
 on:
   schedule:
