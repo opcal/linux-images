@@ -9,6 +9,7 @@ on:
     paths:
       - "ubuntu/**"
       - ".github/workflows/ubuntu.yaml"
+      - "build-bin/ubuntu.sh"
 
 
 jobs:
