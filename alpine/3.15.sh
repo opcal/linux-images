@@ -15,13 +15,13 @@ docker build \
     --build-arg GOSU_VERSION=${GOSU_VERSION} \
     -t alpine:3.15-${TAG_VERSION} \
     -f ${PROJECT_DIR}/alpine/base/Dockerfile . --no-cache
-docker image tag alpine:3.15-${TAG_VERSION} ${CONTAINER_REGISTRY_URL}/opcal/alpine:3.15-${TIMESTAMP}
-docker image tag alpine:3.15-${TAG_VERSION} ${CONTAINER_REGISTRY_URL}/opcal/alpine:3.15
-docker push ${CONTAINER_REGISTRY_URL}/opcal/alpine:3.15-${TIMESTAMP}
-docker push ${CONTAINER_REGISTRY_URL}/opcal/alpine:3.15
+docker image tag alpine:3.15-${TAG_VERSION} ${CI_REGISTRY}/opcal/alpine:3.15-${TIMESTAMP}
+docker image tag alpine:3.15-${TAG_VERSION} ${CI_REGISTRY}/opcal/alpine:3.15
+docker push ${CI_REGISTRY}/opcal/alpine:3.15-${TIMESTAMP}
+docker push ${CI_REGISTRY}/opcal/alpine:3.15
 
-docker rmi -f ${CONTAINER_REGISTRY_URL}/opcal/alpine:3.15
-docker rmi -f ${CONTAINER_REGISTRY_URL}/opcal/alpine:3.15-${TIMESTAMP}
+docker rmi -f ${CI_REGISTRY}/opcal/alpine:3.15
+docker rmi -f ${CI_REGISTRY}/opcal/alpine:3.15-${TIMESTAMP}
 docker rmi -f alpine:3.15-${TAG_VERSION}
 
 echo 'build alpine:3.15 finished'
