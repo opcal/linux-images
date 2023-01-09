@@ -17,14 +17,11 @@ docker build \
     -f ${PROJECT_DIR}/alpine/base/Dockerfile . --no-cache
 docker image tag alpine:3.16-${TAG_VERSION} ${CI_REGISTRY}/opcal/alpine:3.16-${TIMESTAMP}
 docker image tag alpine:3.16-${TAG_VERSION} ${CI_REGISTRY}/opcal/alpine:3.16
-docker image tag alpine:3.16-${TAG_VERSION} ${CI_REGISTRY}/opcal/alpine:latest
 docker push ${CI_REGISTRY}/opcal/alpine:3.16-${TIMESTAMP}
 docker push ${CI_REGISTRY}/opcal/alpine:3.16
-docker push ${CI_REGISTRY}/opcal/alpine:latest
 
 docker rmi -f ${CI_REGISTRY}/opcal/alpine:3.16
 docker rmi -f ${CI_REGISTRY}/opcal/alpine:3.16-${TIMESTAMP}
-docker rmi -f ${CI_REGISTRY}/opcal/alpine:latest
 docker rmi -f alpine:3.16-${TAG_VERSION}
 
 echo 'build alpine:3.16 finished'
