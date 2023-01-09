@@ -7,12 +7,14 @@ echo " "
 echo 'build oraclelinux:9-slim start'
 
 GOSU_VERSION=$(curl https://api.github.com/repos/tianon/gosu/releases/latest | grep tag_name | cut -d '"' -f 4)
+BASE_IMAGE=oraclelinux:9-slim
 
 # oraclelinux:9-slim
 docker build \
+    --build-arg BASE_IMAGE=${BASE_IMAGE} \
     --build-arg GOSU_VERSION=${GOSU_VERSION} \
     -t oraclelinux:9-slim-${TAG_VERSION} \
-    -f ${PROJECT_DIR}/oraclelinux/9-slim/Dockerfile . --no-cache
+    -f ${PROJECT_DIR}/oraclelinux/base/Dockerfile . --no-cache
 docker image tag oraclelinux:9-slim-${TAG_VERSION} ${CI_REGISTRY}/opcal/oraclelinux:9-slim-${TIMESTAMP}
 docker image tag oraclelinux:9-slim-${TAG_VERSION} ${CI_REGISTRY}/opcal/oraclelinux:9-slim
 docker push ${CI_REGISTRY}/opcal/oraclelinux:9-slim-${TIMESTAMP}
