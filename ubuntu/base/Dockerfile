@@ -1,6 +1,6 @@
 ARG BASE_IMAGE
 
-FROM ${BASE_IMAGE} AS gosu_dist
+FROM ${BASE_IMAGE}
 
 LABEL org.opencontainers.image.authors="opcal@outlook.com"
 
