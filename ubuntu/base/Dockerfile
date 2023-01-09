@@ -2,7 +2,7 @@ ARG BASE_IMAGE
 
 FROM ${BASE_IMAGE} AS gosu_dist
 
-LABEL Author="OPCAL"
+LABEL org.opencontainers.image.authors="opcal@outlook.com"
 
 RUN set -eux; \
     DEBIAN_FRONTEND=noninteractive \

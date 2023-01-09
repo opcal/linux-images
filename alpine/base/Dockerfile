@@ -33,7 +33,7 @@ RUN set -eux; \
 
 FROM ${BASE_IMAGE}
 
-LABEL Author="OPCAL"
+LABEL org.opencontainers.image.authors="opcal@outlook.com"
 
 RUN apk --no-cache add ca-certificates \
         curl; \

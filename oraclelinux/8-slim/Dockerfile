@@ -1,6 +1,6 @@
 FROM oraclelinux:8-slim
 
-LABEL Author="OPCAL"
+LABEL org.opencontainers.image.authors="opcal@outlook.com"
 
 RUN microdnf update -y \
     && microdnf install -y --setopt=install_weak_deps=0 \
