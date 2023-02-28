@@ -9,6 +9,10 @@ echo 'build oraclelinux:9-slim start'
 GOSU_VERSION=$(curl https://api.github.com/repos/tianon/gosu/releases/latest | grep tag_name | cut -d '"' -f 4)
 BASE_IMAGE=oraclelinux:9-slim
 
+echo "BASE_IMAGE=[${BASE_IMAGE}] GOSU_VERSION=[${GOSU_VERSION}]"
+echo " "
+echo " "
+
 # oraclelinux:9-slim
 docker build \
     --build-arg BASE_IMAGE=${BASE_IMAGE} \
