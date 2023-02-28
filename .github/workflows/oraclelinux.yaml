@@ -2,7 +2,7 @@ name: build-oraclelinux-images
 
 on:
   schedule:
-    - cron: "0 3 * * 1"
+    - cron: "20 19 * * 0"
   push:
     branches: 
       - main

@@ -2,7 +2,7 @@ name: build-alpine-images
 
 on:
   schedule:
-    - cron: "0 3 * * 1"
+    - cron: "0 19 * * 0"
   push:
     branches: 
       - main
