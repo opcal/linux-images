@@ -9,6 +9,10 @@ echo 'build alpine:3.17 start'
 BASE_IMAGE=alpine:3.17
 GOSU_VERSION=$(curl https://api.github.com/repos/tianon/gosu/releases/latest | grep tag_name | cut -d '"' -f 4)
 
+echo "BASE_IMAGE=[${BASE_IMAGE}] GOSU_VERSION=[${GOSU_VERSION}]"
+echo " "
+echo " "
+
 # alpine:3.17
 docker build \
     --build-arg BASE_IMAGE=${BASE_IMAGE} \
