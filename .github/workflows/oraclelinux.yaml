@@ -1,6 +1,7 @@
 name: build-oraclelinux-images
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: "20 19 * * 0"
   push:
