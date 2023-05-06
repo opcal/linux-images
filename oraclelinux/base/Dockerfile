@@ -1,6 +1,6 @@
 ARG BASE_IMAGE
 
-FROM ${BASE_IMAGE} as builder 
+FROM ${BASE_IMAGE} AS builder 
 
 RUN microdnf update -y \
     && microdnf install -y --setopt=install_weak_deps=0 \
