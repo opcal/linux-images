@@ -16,9 +16,10 @@ echo " "
 # alpine:3.15
 docker buildx build \
     --platform ${TARGETPLATFORM} \
+    --output "type=image,push=true" \
     --build-arg BASE_IMAGE=${BASE_IMAGE} \
     --build-arg GOSU_VERSION=${GOSU_VERSION} \
-    -t alpine:3.15-${TAG_VERSION} \
+    --push \
     -t ${CI_REGISTRY}/opcal/alpine:3.15-${TIMESTAMP} \ 
     -t ${CI_REGISTRY}/opcal/alpine:3.15 \
     -f ${PROJECT_DIR}/alpine/base/Dockerfile . --no-cache
