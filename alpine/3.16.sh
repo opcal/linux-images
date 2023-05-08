@@ -15,20 +15,17 @@ echo " "
 
 # alpine:3.16
 docker buildx build \
-    --platform ${TARGETPLATFORM} \
+    --platform ${PLATFORM} \
     --build-arg BASE_IMAGE=${BASE_IMAGE} \
     --build-arg GOSU_VERSION=${GOSU_VERSION} \
-    -t alpine:3.16-${TAG_VERSION} \
+    --push \
     -t ${CI_REGISTRY}/opcal/alpine:3.16-${TIMESTAMP} \
     -t ${CI_REGISTRY}/opcal/alpine:3.16 \
     -f ${PROJECT_DIR}/alpine/base/Dockerfile . --no-cache
 
-docker push ${CI_REGISTRY}/opcal/alpine:3.16-${TIMESTAMP}
-docker push ${CI_REGISTRY}/opcal/alpine:3.16
-
-docker rmi -f ${CI_REGISTRY}/opcal/alpine:3.16
-docker rmi -f ${CI_REGISTRY}/opcal/alpine:3.16-${TIMESTAMP}
-docker rmi -f alpine:3.16-${TAG_VERSION}
+docker buildx stop
+docker buildx rm --all-inactive --force
+docker buildx prune -f
 
 echo 'build alpine:3.16 finished'
 echo " "

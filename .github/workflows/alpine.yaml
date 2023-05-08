@@ -37,7 +37,7 @@ jobs:
           TAG_VERSION: ${{ github.run_number }}
           PROJECT_DIR: ${{ github.workspace }}
           CI_REGISTRY: ghcr.io
-          PLATFORM: linux/386,linux/amd64,linux/arm64/v8,linux/ppc64le,linux/s390x
+          PLATFORM: linux/386,linux/amd64,linux/arm64,linux/ppc64le,linux/s390x
         run: |
           sudo apt update && sudo apt install curl &&
           chmod +x build-bin/alpine.sh &&
