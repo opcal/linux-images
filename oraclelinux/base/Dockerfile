@@ -15,10 +15,10 @@ RUN set -eux; \
     ARCH="$(uname -m)"; \
     case "${ARCH}" in \
         aarch64) \
-            BIN_ARCH=arm64
+            BIN_ARCH=arm64 ;
             ;; \
-        x86-64) \
-            BIN_ARCH=amd64
+        x86_64) \
+            BIN_ARCH=amd64 ;
             ;; \
         *) \
             echo "Unsupported arch: ${ARCH}"; \
