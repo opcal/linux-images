@@ -15,13 +15,15 @@ echo " "
 
 # alpine:3.17
 docker build \
+    --platform ${TARGETPLATFORM} \
     --build-arg BASE_IMAGE=${BASE_IMAGE} \
     --build-arg GOSU_VERSION=${GOSU_VERSION} \
     -t alpine:3.17-${TAG_VERSION} \
+    -t ${CI_REGISTRY}/opcal/alpine:3.17-${TIMESTAMP} \
+    -t ${CI_REGISTRY}/opcal/alpine:3.17 \
+    -t ${CI_REGISTRY}/opcal/alpine:latest \
     -f ${PROJECT_DIR}/alpine/base/Dockerfile . --no-cache
-docker image tag alpine:3.17-${TAG_VERSION} ${CI_REGISTRY}/opcal/alpine:3.17-${TIMESTAMP}
-docker image tag alpine:3.17-${TAG_VERSION} ${CI_REGISTRY}/opcal/alpine:3.17
-docker image tag alpine:3.17-${TAG_VERSION} ${CI_REGISTRY}/opcal/alpine:latest
+
 docker push ${CI_REGISTRY}/opcal/alpine:3.17-${TIMESTAMP}
 docker push ${CI_REGISTRY}/opcal/alpine:3.17
 docker push ${CI_REGISTRY}/opcal/alpine:latest

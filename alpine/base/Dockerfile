@@ -1,6 +1,6 @@
 ARG BASE_IMAGE
 
-FROM ${BASE_IMAGE} AS gosu_dist
+FROM --platform=${TARGETPLATFORM} ${BASE_IMAGE} AS gosu_dist
 
 ARG GOSU_VERSION
 
@@ -31,7 +31,7 @@ RUN set -eux; \
 	gosu --version; \
 	gosu nobody true
 
-FROM ${BASE_IMAGE}
+FROM --platform=${TARGETPLATFORM} ${BASE_IMAGE}
 
 LABEL org.opencontainers.image.authors="opcal@outlook.com"
 
