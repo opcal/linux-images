@@ -10,7 +10,7 @@ BASE_IMAGE=ubuntu:jammy
 
 # ubuntu:jammy
 docker buildx create --name ubuntu-jammy --use
-docker build \
+docker buildx build \
     --build-arg BASE_IMAGE=${BASE_IMAGE} \
     --push \
     -t ${CI_REGISTRY}/opcal/ubuntu:jammy-${TIMESTAMP} \
