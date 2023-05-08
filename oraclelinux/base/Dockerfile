@@ -12,9 +12,20 @@ ARG GOSU_VERSION
 
 RUN set -eux; \
     gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 ; \
-    dpkgArch="$(dpkg --print-architecture | awk -F- '{ print $NF }')"; \
-    curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-${dpkgArch}"; \
-    curl -o /usr/local/bin/gosu.asc -SL "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-${dpkgArch}.asc"; \
+    ARCH="$(uname -m)"; \
+    case "${ARCH}" in \
+        aarch64) \
+            BIN_ARCH=arm64
+            ;; \
+        x86-64) \
+            BIN_ARCH=amd64
+            ;; \
+        *) \
+            echo "Unsupported arch: ${ARCH}"; \
+            exit 1; \
+            ;; \
+    curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-${BIN_ARCH}"; \
+    curl -o /usr/local/bin/gosu.asc -SL "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-${BIN_ARCH}.asc"; \
     gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu ; \
     chmod +x /usr/local/bin/gosu
 
