@@ -26,6 +26,7 @@ docker buildx build \
 docker buildx stop
 docker buildx rm --all-inactive --force
 docker buildx prune -f
+docker buildx ls
 
 echo 'build alpine:3.15 finished'
 echo " "
