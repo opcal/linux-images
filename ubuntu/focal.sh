@@ -9,7 +9,7 @@ echo 'build ubuntu:focal start'
 BASE_IMAGE=ubuntu:focal
 
 # ubuntu:focal
-docker buildx ls
+# docker buildx ls
 # docker buildx create --name ubuntu-focal --driver docker --use
 docker buildx build \
     --platform ${PLATFORM} \
@@ -22,7 +22,7 @@ docker buildx build \
 # docker buildx stop ubuntu-focal
 # docker buildx rm ubuntu-focal --force
 # docker buildx prune -f
-docker buildx ls
+# docker buildx ls
 
 echo 'build ubuntu:focal finished'
 echo " "
