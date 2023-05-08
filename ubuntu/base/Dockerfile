@@ -7,7 +7,7 @@ LABEL org.opencontainers.image.authors="opcal@outlook.com"
 RUN set -eux; \
     DEBIAN_FRONTEND=noninteractive ; \
     apt-get update ; \
-    apt-get install -y --no-install-recommends ; \
+    apt-get install -y --no-install-recommends \
         ca-certificates \
         curl \
         gosu 
