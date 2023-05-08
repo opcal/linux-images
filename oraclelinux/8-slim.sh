@@ -14,19 +14,19 @@ echo " "
 echo " "
 
 # oraclelinux:8-slim
-docker build \
+docker buildx create --name oraclelinux-8-slim --use
+docker buildx build \
+    --platform ${PLATFORM} \
     --build-arg BASE_IMAGE=${BASE_IMAGE} \
     --build-arg GOSU_VERSION=${GOSU_VERSION} \
-    -t oraclelinux:8-slim-${TAG_VERSION} \
+    --push \
+    -t ${CI_REGISTRY}/opcal/oraclelinux:8-slim-${TIMESTAMP} \
+    -t ${CI_REGISTRY}/opcal/oraclelinux:8-slim \
     -f ${PROJECT_DIR}/oraclelinux/base/Dockerfile . --no-cache
-docker image tag oraclelinux:8-slim-${TAG_VERSION} ${CI_REGISTRY}/opcal/oraclelinux:8-slim-${TIMESTAMP}
-docker image tag oraclelinux:8-slim-${TAG_VERSION} ${CI_REGISTRY}/opcal/oraclelinux:8-slim
-docker push ${CI_REGISTRY}/opcal/oraclelinux:8-slim-${TIMESTAMP}
-docker push ${CI_REGISTRY}/opcal/oraclelinux:8-slim
 
-docker rmi -f ${CI_REGISTRY}/opcal/oraclelinux:8-slim
-docker rmi -f ${CI_REGISTRY}/opcal/oraclelinux:8-slim-${TIMESTAMP}
-docker rmi -f oraclelinux:8-slim-${TAG_VERSION}
+docker buildx stop oraclelinux-8-slim
+docker buildx rm oraclelinux-8-slim --force
+docker buildx prune -f
 
 echo 'build oraclelinux:8-slim finished'
 echo " "
