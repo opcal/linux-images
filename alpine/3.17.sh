@@ -24,7 +24,8 @@ docker buildx build \
     -t ${CI_REGISTRY}/opcal/alpine:latest \
     -f ${PROJECT_DIR}/alpine/base/Dockerfile . --no-cache
 
-docker buildx stop
+docker buildx stop default
+docker buildx rm default --force
 docker buildx rm --all-inactive --force
 docker buildx prune -f
 
