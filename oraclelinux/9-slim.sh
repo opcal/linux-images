@@ -15,7 +15,7 @@ echo " "
 
 # oraclelinux:9-slim
 docker buildx create --name oraclelinux-9-slim --use
-docker build \
+docker buildx build \
     --platform ${PLATFORM} \
     --build-arg BASE_IMAGE=${BASE_IMAGE} \
     --build-arg GOSU_VERSION=${GOSU_VERSION} \
