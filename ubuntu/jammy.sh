@@ -9,7 +9,7 @@ echo 'build ubuntu:jammy start'
 BASE_IMAGE=ubuntu:jammy
 
 # ubuntu:jammy
-docker buildx create --name ubuntu-jammy --use
+docker buildx create --name ubuntu-jammy --driver docker --use
 docker buildx build \
     --build-arg BASE_IMAGE=${BASE_IMAGE} \
     --push \
