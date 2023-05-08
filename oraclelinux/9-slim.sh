@@ -24,8 +24,8 @@ docker buildx build \
     -t ${CI_REGISTRY}/opcal/oraclelinux:9-slim \
     -f ${PROJECT_DIR}/oraclelinux/base/Dockerfile . --no-cache
 
-docker buildx stop oraclelinux-8-slim
-docker buildx rm oraclelinux-8-slim --force
+docker buildx stop oraclelinux-9-slim
+docker buildx rm oraclelinux-9-slim --force
 docker buildx prune -f
 
 echo 'build oraclelinux:9-slim finished'
