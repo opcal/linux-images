@@ -36,6 +36,7 @@ jobs:
           PROJECT_VERSION: 1.0.0
           TAG_VERSION: ${{ github.run_number }}
           PROJECT_DIR: ${{ github.workspace }}
+          CI_REGISTRY: ghcr.io
           TARGETPLATFORM: linux/386,linux/amd64,linux/arm64/v8,linux/ppc64le,linux/s390x
         run: |
           sudo apt update && sudo apt install curl &&
