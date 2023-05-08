@@ -24,12 +24,17 @@ docker buildx build \
     -t ${CI_REGISTRY}/opcal/alpine:3.15 \
     -f ${PROJECT_DIR}/alpine/base/Dockerfile . --no-cache
 
-docker push ${CI_REGISTRY}/opcal/alpine:3.15-${TIMESTAMP}
-docker push ${CI_REGISTRY}/opcal/alpine:3.15
+# docker push ${CI_REGISTRY}/opcal/alpine:3.15-${TIMESTAMP}
+# docker push ${CI_REGISTRY}/opcal/alpine:3.15
 
 docker rmi -f ${CI_REGISTRY}/opcal/alpine:3.15
 docker rmi -f ${CI_REGISTRY}/opcal/alpine:3.15-${TIMESTAMP}
 docker rmi -f alpine:3.15-${TAG_VERSION}
+
+docker buildx stop
+docker buildx rm --all-inactive --force
+docker buildx prune -f
+docker image ls
 
 echo 'build alpine:3.15 finished'
 echo " "
