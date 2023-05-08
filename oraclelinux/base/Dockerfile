@@ -24,6 +24,7 @@ RUN set -eux; \
             echo "Unsupported arch: ${ARCH}"; \
             exit 1; \
             ;; \
+    esac; \
     curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-${BIN_ARCH}"; \
     curl -o /usr/local/bin/gosu.asc -SL "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-${BIN_ARCH}.asc"; \
     gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu ; \
