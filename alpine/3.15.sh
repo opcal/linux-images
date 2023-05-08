@@ -14,7 +14,6 @@ echo " "
 echo " "
 
 # alpine:3.15
-docker buildx create --name alpine-3.15 --use
 docker buildx build \
     --platform ${PLATFORM} \
     --build-arg BASE_IMAGE=${BASE_IMAGE} \
@@ -23,10 +22,6 @@ docker buildx build \
     -t ${CI_REGISTRY}/opcal/alpine:3.15-${TIMESTAMP} \
     -t ${CI_REGISTRY}/opcal/alpine:3.15 \
     -f ${PROJECT_DIR}/alpine/base/Dockerfile . --no-cache
-
-docker buildx stop alpine-3.15
-docker buildx rm alpine-3.15 --force
-docker buildx prune -f
 
 echo 'build alpine:3.15 finished'
 echo " "

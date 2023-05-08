@@ -14,7 +14,6 @@ echo " "
 echo " "
 
 # oraclelinux:9-slim
-docker buildx create --name oraclelinux-9-slim --use
 docker buildx build \
     --platform ${PLATFORM} \
     --build-arg BASE_IMAGE=${BASE_IMAGE} \
@@ -23,10 +22,6 @@ docker buildx build \
     -t ${CI_REGISTRY}/opcal/oraclelinux:9-slim-${TIMESTAMP} \
     -t ${CI_REGISTRY}/opcal/oraclelinux:9-slim \
     -f ${PROJECT_DIR}/oraclelinux/base/Dockerfile . --no-cache
-
-docker buildx stop oraclelinux-9-slim
-docker buildx rm oraclelinux-9-slim --force
-docker buildx prune -f
 
 echo 'build oraclelinux:9-slim finished'
 echo " "
