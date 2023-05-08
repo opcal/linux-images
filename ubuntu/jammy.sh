@@ -9,18 +9,17 @@ echo 'build ubuntu:jammy start'
 BASE_IMAGE=ubuntu:jammy
 
 # ubuntu:jammy
+docker buildx create --name ubuntu-jammy --use
 docker build \
     --build-arg BASE_IMAGE=${BASE_IMAGE} \
-    -t ubuntu:jammy-${TAG_VERSION} \
+    --push \
+    -t ${CI_REGISTRY}/opcal/ubuntu:jammy-${TIMESTAMP} \
+    -t ${CI_REGISTRY}/opcal/ubuntu:jammy \
     -f ${PROJECT_DIR}/ubuntu/base/Dockerfile . --no-cache
-docker image tag ubuntu:jammy-${TAG_VERSION} ${CI_REGISTRY}/opcal/ubuntu:jammy-${TIMESTAMP}
-docker image tag ubuntu:jammy-${TAG_VERSION} ${CI_REGISTRY}/opcal/ubuntu:jammy
-docker push ${CI_REGISTRY}/opcal/ubuntu:jammy-${TIMESTAMP}
-docker push ${CI_REGISTRY}/opcal/ubuntu:jammy
 
-docker rmi -f ${CI_REGISTRY}/opcal/ubuntu:jammy
-docker rmi -f ${CI_REGISTRY}/opcal/ubuntu:jammy-${TIMESTAMP}
-docker rmi -f ubuntu:jammy-${TAG_VERSION}
+docker buildx stop ubuntu-jammy
+docker buildx rm ubuntu-jammy --force
+docker buildx prune -f
 
 echo 'build ubuntu:jammy finished'
 echo " "
