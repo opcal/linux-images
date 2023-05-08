@@ -10,7 +10,7 @@ RUN set -eux; \
     apt-get install -y --no-install-recommends \
         ca-certificates \
         curl \
-        gosu 
+        gosu \
     ; \
     apt-get clean ; \
     apt-get -y autoclean ; \
