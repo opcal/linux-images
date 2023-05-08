@@ -14,7 +14,7 @@ echo " "
 echo " "
 
 # alpine:3.17
-docker build \
+docker buildx build \
     --platform ${TARGETPLATFORM} \
     --build-arg BASE_IMAGE=${BASE_IMAGE} \
     --build-arg GOSU_VERSION=${GOSU_VERSION} \
