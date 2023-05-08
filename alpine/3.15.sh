@@ -15,8 +15,8 @@ echo " "
 
 # alpine:3.15
 docker buildx build \
-    --platform ${TARGETPLATFORM} \
-    --output "type=image,push=true" \
+    --platform ${PLATFORM} \
+    --output "type=registry,push=true" \
     --build-arg BASE_IMAGE=${BASE_IMAGE} \
     --build-arg GOSU_VERSION=${GOSU_VERSION} \
     --push \
