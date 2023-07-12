@@ -1,9 +1,9 @@
-name: Auto Tag
+name: activity
 
 on: 
   workflow_dispatch:
   schedule:
-    - cron: "0 12 10 */2 *"
+    - cron: "0 15 10 * *"
 
 jobs:
   auto-tag:
@@ -14,8 +14,10 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
       - uses: fregante/setup-git-user@v2
-      - name: Tag
+      - name: activity
         run: |
           TIMESTAMP=$(date +%y%m%d%H%M)
-          git tag -a ${TIMESTAMP} -m "Tag ${TIMESTAMP}"
-          git push origin ${TIMESTAMP}
+          echo "${TIMESTAMP}" >> .github/auto-activity
+          git add .
+          git commit -m "activity ${TIMESTAMP}"
+          git push
