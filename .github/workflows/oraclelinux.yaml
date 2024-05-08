@@ -10,7 +10,7 @@ on:
     paths:
       - "oraclelinux/**"
       - ".github/workflows/oraclelinux.yaml"
-      - "build-bin/oraclelinux.sh"
+      - ".ci/oraclelinux.sh"
 
 
 jobs:
@@ -40,5 +40,5 @@ jobs:
           PLATFORM: linux/amd64,linux/arm64/v8
         run: |
           sudo apt update && sudo apt install curl jq &&
-          chmod +x build-bin/oraclelinux.sh &&
-          build-bin/oraclelinux.sh
+          chmod +x .ci/oraclelinux.sh &&
+          .ci/oraclelinux.sh
