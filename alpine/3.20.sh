@@ -21,7 +21,6 @@ docker buildx build \
     --push \
     -t ${CI_REGISTRY}/opcal/alpine:3.20-${TIMESTAMP} \
     -t ${CI_REGISTRY}/opcal/alpine:3.20 \
-    -t ${CI_REGISTRY}/opcal/alpine:latest \
     -f ${PROJECT_DIR}/alpine/base/Dockerfile . --no-cache
 
 echo 'build alpine:3.20 finished'
