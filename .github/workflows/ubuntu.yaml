@@ -42,3 +42,4 @@ jobs:
           sudo apt update && sudo apt install curl jq &&
           chmod +x .ci/ubuntu.sh &&
           .ci/ubuntu.sh
+          docker image prune -f
