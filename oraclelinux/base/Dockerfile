@@ -1,6 +1,8 @@
+# check=skip=InvalidDefaultArgInFrom
+
 ARG BASE_IMAGE
 
-FROM --platform=${TARGETPLATFORM} ${BASE_IMAGE} AS builder 
+FROM ${BASE_IMAGE} AS builder 
 
 RUN microdnf update -y \
     && microdnf install -y --setopt=install_weak_deps=0 \
@@ -30,7 +32,7 @@ RUN set -eux; \
     gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu ; \
     chmod +x /usr/local/bin/gosu
 
-FROM --platform=${TARGETPLATFORM} ${BASE_IMAGE}
+FROM ${BASE_IMAGE}
 
 LABEL org.opencontainers.image.authors="opcal@outlook.com"
 
