@@ -27,7 +27,7 @@ target "alpine3_18" {
     }
     platforms = ["linux/386","linux/amd64","linux/arm64/v8","linux/ppc64le","linux/s390x"]
     tags = [
-        "${CI_REGISTRY}/opcal/opcal/alpine:3.18"
+        "${CI_REGISTRY}/opcal/alpine:3.18"
     ]
 }
 
@@ -40,7 +40,7 @@ target "alpine3_19" {
     }
     platforms = ["linux/386","linux/amd64","linux/arm64/v8","linux/ppc64le","linux/s390x"]
     tags = [
-        "${CI_REGISTRY}/opcal/opcal/alpine:3.19"
+        "${CI_REGISTRY}/opcal/alpine:3.19"
     ]
 }
 
@@ -53,7 +53,7 @@ target "alpine3_20" {
     }
     platforms = ["linux/386","linux/amd64","linux/arm64/v8","linux/ppc64le","linux/s390x"]
     tags = [
-        "${CI_REGISTRY}/opcal/opcal/alpine:3.20"
+        "${CI_REGISTRY}/opcal/alpine:3.20"
     ]
 }
 
@@ -66,7 +66,7 @@ target "alpine3_21" {
     }
     platforms = ["linux/386","linux/amd64","linux/arm64/v8","linux/ppc64le","linux/s390x"]
     tags = [
-        "${CI_REGISTRY}/opcal/opcal/alpine:3.21",
-        "${CI_REGISTRY}/opcal/opcal/alpine:latest"
+        "${CI_REGISTRY}/opcal/alpine:3.21",
+        "${CI_REGISTRY}/opcal/alpine:latest"
     ]
 }
