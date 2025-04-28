@@ -8,7 +8,7 @@ echo 'build ubuntu start'
 
 BASE_IMAGE=ubuntu:noble
 
-docker buildx build \
+docker buildx bake \
     -f ${PROJECT_DIR}/ubuntu/docker-bake.hcl \
     --load \
     --pull \
