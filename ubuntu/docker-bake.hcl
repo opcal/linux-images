@@ -16,7 +16,7 @@ target "jammy" {
     args = {
         BASE_IMAGE = "ubuntu:jammy"
     }
-    platforms = ["linux/amd64", "linux/arm64"]
+    platforms = ["linux/amd64","linux/arm64/v8","linux/arm/v7","linux/ppc64le","linux/s390x"]
     tags = ["${CI_REGISTRY}/opcal/ubuntu:jammy"]
 }
 
@@ -26,6 +26,6 @@ target "noble" {
     args = {
         BASE_IMAGE = "ubuntu:noble"
     }
-    platforms = ["linux/amd64", "linux/arm64"]
+    platforms = ["linux/amd64","linux/arm64/v8","linux/arm/v7","linux/ppc64le","linux/s390x"]
     tags = ["${CI_REGISTRY}/opcal/ubuntu:noble"]
 }

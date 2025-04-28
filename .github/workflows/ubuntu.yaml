@@ -40,6 +40,5 @@ jobs:
           PLATFORM: linux/amd64,linux/arm64/v8,linux/arm/v7,linux/ppc64le,linux/s390x
         run: |
           sudo apt update && sudo apt install curl jq &&
-          chmod +x .ci/ubuntu.sh &&
-          .ci/ubuntu.sh
+          ./ubuntu/ubuntu.sh
           docker image prune -f
