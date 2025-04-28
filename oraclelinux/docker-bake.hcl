@@ -27,8 +27,7 @@ target "oraclelinux8" {
     }
     platforms = ["linux/amd64","linux/arm64/v8"]
     tags = [
-        "${CI_REGISTRY}/opcal/oraclelinux:8-slim",
-        "${CI_REGISTRY}/opcal/oraclelinux:8-slim-${TIMESTAMP}"
+        "${CI_REGISTRY}/opcal/oraclelinux:8-slim"
     ]
 }
 
@@ -41,7 +40,6 @@ target "oraclelinux9" {
     }
     platforms = ["linux/amd64","linux/arm64/v8"]
     tags = [
-        "${CI_REGISTRY}/opcal/oraclelinux:9-slim",
-        "${CI_REGISTRY}/opcal/oraclelinux:9-slim-${TIMESTAMP}"
+        "${CI_REGISTRY}/opcal/oraclelinux:9-slim"
     ]
 }

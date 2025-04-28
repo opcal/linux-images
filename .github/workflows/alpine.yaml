@@ -10,7 +10,6 @@ on:
     paths:
       - "alpine/**"
       - ".github/workflows/alpine.yaml"
-      - ".ci/alpine.sh"
 
 
 jobs:
@@ -40,5 +39,4 @@ jobs:
           PLATFORM: linux/386,linux/amd64,linux/arm64/v8,linux/ppc64le,linux/s390x
         run: |
           sudo apt update && sudo apt install curl jq &&
-          chmod +x .ci/alpine.sh &&
-          .ci/alpine.sh
+          ./alpine/alpine.sh
