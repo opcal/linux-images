@@ -18,6 +18,10 @@ variable "GOSU_VERSION" {
     type = string
 }
 
+variable "LATEST_VERSION" {
+    default = "3.21"
+}
+
 target "alpine" {
     name = "alpine-${replace(item.version, ".", "_")}"
     matrix = {
@@ -48,6 +52,7 @@ target "alpine" {
     }
     platforms = ["linux/386","linux/amd64","linux/arm64/v8","linux/ppc64le","linux/s390x"]
     tags = [
-        "${CI_REGISTRY}/opcal/alpine:${item.version}"
+        "${CI_REGISTRY}/opcal/alpine:${item.version}",
+        equal(item.version, LATEST_VERSION) ? "${CI_REGISTRY}/opcal/alpine:latest" : ""
     ]
 }
