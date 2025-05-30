@@ -19,17 +19,13 @@ variable "GOSU_VERSION" {
 }
 
 variable "LATEST_VERSION" {
-    default = "3.21"
+    default = "3.22"
 }
 
 target "alpine" {
     name = "alpine-${replace(item.version, ".", "_")}"
     matrix = {
       item = [
-        {
-            base = "alpine:3.18"
-            version = "3.18"
-        },
         {
             base = "alpine:3.19"
             version = "3.19"
@@ -41,6 +37,10 @@ target "alpine" {
         {
             base = "alpine:3.21"
             version = "3.21"
+        },
+        {
+            base = "alpine:3.22"
+            version = "3.22"
         }
       ]
     }
