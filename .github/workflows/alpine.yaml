@@ -10,6 +10,7 @@ on:
     paths:
       - "alpine/**"
       - ".github/workflows/alpine.yaml"
+      - ".github/buildkitd.toml"
 
 
 jobs:
