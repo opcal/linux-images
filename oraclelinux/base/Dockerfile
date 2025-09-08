@@ -13,24 +13,32 @@ RUN microdnf update -y \
 ARG GOSU_VERSION
 
 RUN set -eux; \
-    gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 ; \
-    ARCH="$(uname -m)"; \
-    case "${ARCH}" in \
-        aarch64) \
-            BIN_ARCH=arm64 ; \
-            ;; \
-        x86_64) \
-            BIN_ARCH=amd64 ; \
-            ;; \
-        *) \
-            echo "Unsupported arch: ${ARCH}"; \
-            exit 1; \
-            ;; \
-    esac; \
-    curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-${BIN_ARCH}"; \
-    curl -o /usr/local/bin/gosu.asc -SL "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-${BIN_ARCH}.asc"; \
-    gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu ; \
-    chmod +x /usr/local/bin/gosu
+	\
+	rpmArch="$(rpm --query --queryformat='%{ARCH}' rpm)"; \
+	case "$rpmArch" in \
+		aarch64) dpkgArch='arm64' ;; \
+		armv[67]*) dpkgArch='armhf' ;; \
+		i[3456]86) dpkgArch='i386' ;; \
+		ppc64le) dpkgArch='ppc64el' ;; \
+		riscv64 | s390x) dpkgArch="$rpmArch" ;; \
+		x86_64) dpkgArch='amd64' ;; \
+		*) echo >&2 "error: unknown/unsupported architecture '$rpmArch'"; exit 1 ;; \
+	esac; \
+	wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch"; \
+	wget -O /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch.asc"; \
+	\
+# verify the signature
+	export GNUPGHOME="$(mktemp -d)"; \
+	gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4; \
+	gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu; \
+	gpgconf --kill all; \
+	rm -rf "$GNUPGHOME" /usr/local/bin/gosu.asc; \
+	\
+	chmod +x /usr/local/bin/gosu; \
+# verify that the binary works
+	gosu --version; \
+	gosu nobody true
+
 
 FROM ${BASE_IMAGE}
 
