@@ -29,6 +29,10 @@ target "oraclelinux" {
         {
             base = "oraclelinux:9-slim"
             version = "9-slim"
+        },
+        {
+            base = "oraclelinux:10-slim"
+            version = "10-slim"
         }
       ]
     }
