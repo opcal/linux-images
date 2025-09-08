@@ -8,6 +8,7 @@ RUN microdnf update -y \
     && microdnf install -y --setopt=install_weak_deps=0 \
         ca-certificates \
         curl \
+		gnupg2 \
         wget \
      && microdnf clean all
 
