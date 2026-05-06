@@ -25,6 +25,10 @@ target "ubuntu" {
         {
             base = "ubuntu:noble"
             version = "noble"
+        },
+        {
+            base = "ubuntu:resolute"
+            version = "resolute"
         }
       ]
     }
