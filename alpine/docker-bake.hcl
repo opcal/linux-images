@@ -27,10 +27,6 @@ target "alpine" {
     matrix = {
       item = [
         {
-            base = "alpine:3.20"
-            version = "3.20"
-        },
-        {
             base = "alpine:3.21"
             version = "3.21"
         },
