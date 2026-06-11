@@ -19,7 +19,7 @@ variable "GOSU_VERSION" {
 }
 
 variable "LATEST_VERSION" {
-    default = "3.23"
+    default = "3.24"
 }
 
 target "alpine" {
@@ -37,6 +37,10 @@ target "alpine" {
         {
             base = "alpine:3.23"
             version = "3.23"
+        },
+        {
+            base = "alpine:3.24"
+            version = "3.24"
         }
       ]
     }
